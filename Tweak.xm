@@ -9,11 +9,12 @@ static void pref() {
 %hook SBDownloadingIcon
 - (id)displayName {
 	NSString *displayName_;
-	if (enabled) {
+	/*if (enabled) {
 	displayName_ = [NSString stringWithFormat:@"%d%%", (int)([self progress]*100)];
 	} else {
 	displayName_ = %orig;
-	}
+	}*/
+	displayName_ = enabled ? [NSString stringWithFormat:@"%d%%", (int)([self progress]*100)] : %orig;
 	return displayName_;
 }
 %end
